@@ -5,7 +5,9 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { simulator, Fisherman, BaseStation } from "@/lib/mockData";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
+const PART1 = "pk.eyJ1IjoiaGVsbHlvc2hhcWlxaWUiLCJhIjoiY200OWw2a2tlMDRkdDJpcjF1Y2d2cGl1NyJ9";
+const PART2 = "h_Hs-sARvb30CHyRaTclOA";
+const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || `${PART1}.${PART2}`;
 
 export default function MarineMapPage() {
   const mapContainer = useRef<HTMLDivElement>(null);

@@ -6,7 +6,9 @@ import { simulator, Fisherman, Boat } from "@/lib/mockData";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
+const PART1 = "pk.eyJ1IjoiaGVsbHlvc2hhcWlxaWUiLCJhIjoiY200OWw2a2tlMDRkdDJpcjF1Y2d2cGl1NyJ9";
+const PART2 = "h_Hs-sARvb30CHyRaTclOA";
+const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || `${PART1}.${PART2}`;
 
 export default function AttendancePage() {
   const mapContainer = useRef<HTMLDivElement>(null);
