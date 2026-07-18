@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appID": "TK5W5C4S89.com.vorce.app",
+        "paths": [ "/invite*" ]
+      }
+    ]
+  }
+}

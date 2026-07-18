@@ -1,0 +1,1 @@
+Tempatkan berkas hasil build Windows (latest.yml dan berkas installer .exe) di folder ini agar dapat diakses oleh fitur Auto Update.

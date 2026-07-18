@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vorce.app",
+      "sha256_cert_fingerprints": [
+        "82:7c:fd:80:cc:25:fd:61:a2:1a:b9:c8:39:c0:f0:dd:e4:a9:34:e5:63:00:94:63:96:d4:ef:4c:26:17:63:a5",
+        "E1:69:4A:DF:8E:8C:B1:4C:C1:3F:6C:5B:B6:A0:0A:5B:FF:ED:54:95:DC:F3:8E:55:2C:F9:6C:55:A4:F6:72:AA"
+      ]
+    }
+  }
+]

@@ -1,0 +1,1 @@
+Tempatkan berkas hasil build macOS (latest-mac.yml dan berkas installer .dmg) di folder ini agar dapat diakses oleh fitur Auto Update.
