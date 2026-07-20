@@ -18,7 +18,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/vorceku.png", type: "image/png", sizes: "512x512" },
     ],
   },
 };

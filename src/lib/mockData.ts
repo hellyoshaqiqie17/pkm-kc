@@ -598,8 +598,22 @@ class SimulationEngine {
   private intervalId: NodeJS.Timeout | null = null;
   private soundEnabled: boolean = false;
   private latestSOSId: string | null = null;
+  private history: { time: string; avgRssi: number; avgPacketLoss: number; alertCount: number; activeDevices: number }[] = [];
 
   constructor() {
+    const now = Date.now();
+    this.history = Array.from({ length: 15 }).map((_, idx) => {
+      const timeOffset = (15 - idx) * 3000;
+      const timeStr = new Date(now - timeOffset).toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+      return {
+        time: timeStr,
+        avgRssi: parseFloat((-70 - Math.random() * 15).toFixed(1)),
+        avgPacketLoss: parseFloat((1 + Math.random() * 3).toFixed(1)),
+        alertCount: idx > 12 ? 1 : 0,
+        activeDevices: 9
+      };
+    });
+
     if (typeof window !== "undefined") {
       this.start();
     }
@@ -623,6 +637,10 @@ class SimulationEngine {
 
   public getStations() {
     return this.stations;
+  }
+
+  public getHistory() {
+    return this.history;
   }
 
   public enableSound(val: boolean) {
@@ -954,6 +972,24 @@ class SimulationEngine {
             }
           }
         }
+      }
+
+      // Record historical metrics
+      const active = this.fishermen.filter((f) => f.status !== "offline");
+      const avgRssi = active.length > 0 ? active.reduce((sum, f) => sum + f.rssi, 0) / active.length : -110;
+      const avgLoss = active.length > 0 ? active.reduce((sum, f) => sum + f.packetLoss, 0) / active.length : 100;
+      const emergencyCount = this.alerts.filter((a) => a.status === "active").length;
+
+      this.history.push({
+        time: new Date().toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit", second: "2-digit" }),
+        avgRssi: parseFloat(avgRssi.toFixed(1)),
+        avgPacketLoss: parseFloat(avgLoss.toFixed(1)),
+        alertCount: emergencyCount,
+        activeDevices: active.length
+      });
+
+      if (this.history.length > 20) {
+        this.history.shift();
       }
 
       this.notify();

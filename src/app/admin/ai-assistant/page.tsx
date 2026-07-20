@@ -7,6 +7,7 @@ interface Message {
   sender: "user" | "ai";
   text: string;
   time: string;
+  isTyping?: boolean;
 }
 
 export default function AIAssistantPage() {
@@ -20,6 +21,7 @@ export default function AIAssistantPage() {
     }
   ]);
   const [inputText, setInputText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -61,9 +63,9 @@ export default function AIAssistantPage() {
   }, [fishermen]);
 
   // Handle mock AI response based on live telemetry state
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputText.trim()) return;
+    if (!inputText.trim() || isLoading) return;
 
     const userText = inputText;
     const newMsg: Message = {
@@ -74,60 +76,65 @@ export default function AIAssistantPage() {
 
     setMessages(prev => [...prev, newMsg]);
     setInputText("");
+    setIsLoading(true);
 
-    // Simulate AI thinking and response
-    setTimeout(() => {
-      let aiResponse = "";
-      const lowerText = userText.toLowerCase();
+    // Show animated typing indicator
+    setMessages(prev => [...prev, {
+      sender: "ai",
+      text: "",
+      time: new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }),
+      isTyping: true
+    }]);
 
-      // Look up specific fishermen in query
-      const matchFisher = fishermen.find(f => lowerText.includes(f.name.toLowerCase()) || lowerText.includes(f.id.toLowerCase()));
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: userText,
+          history: messages
+            .filter(m => !m.isTyping)
+            .map(m => ({
+              role: m.sender === "user" ? "user" : "model",
+              parts: [{ text: m.text }]
+            })),
+          fleetState: {
+            fishermen,
+            alerts,
+            boats: simulator.getBoats(),
+            vests: simulator.getVests(),
+            stations: simulator.getStations()
+          }
+        })
+      });
 
-      if (matchFisher) {
-        if (matchFisher.status === "offline") {
-          aiResponse = `Rekam telemetri menunjukkan bahwa nelayan **${matchFisher.name}** saat ini sedang offline (waktu bersandar terakhir: ${matchFisher.tripDepartureTime}). Baterai rompi tidak memancarkan sinyal.`;
-        } else {
-          aiResponse = `**Analisis AI untuk Nelayan ${matchFisher.name}** (${matchFisher.assignedVestId}):
-- **Status Keselamatan**: ${matchFisher.status === "emergency" ? "DARURAT KRITIS" : matchFisher.status === "warning" ? "PERINGATAN DIaktifkan" : "AMAN / OPERASIONAL"}
-- **Fisiologi Medis**: Saturasi Oksigen (SpO₂) sebesar **${matchFisher.spo2}%** (Batas aman: >95%), Detak Jantung **${matchFisher.heartRate} BPM**, dan Suhu Tubuh **${matchFisher.temperature}°C**.
-- **Evaluasi Indikator**: Tingkat Kelelahan: **${matchFisher.fatigue === "High Fatigue" ? "Sangat Lelah" : matchFisher.fatigue === "Moderate Fatigue" ? "Kelelahan Sedang" : "Aman / Bugar"}**, Risiko Hipotermia: **${matchFisher.hypothermiaRisk === "High Risk" ? "Risiko Tinggi" : matchFisher.hypothermiaRisk === "Low Risk" ? "Risiko Rendah" : "Aman"}**. Sensor Air: **${matchFisher.waterDetected ? "BASAH (Terendam)" : "KERING"}**.
-- **Log Perjalanan**: Nelayan telah berada di laut selama **${matchFisher.tripDuration} menit** dengan jarak jelajah **${matchFisher.tripDistance} km** dari garis pantai.
-
-*Rekomendasi Penanganan AI*: ${matchFisher.status === "emergency" ? "Kirimkan kapal patroli SAR segera ke koordinat nelayan!" : matchFisher.spo2 < 95 ? "Nelayan kekurangan oksigen darah. Minta bersandar untuk istirahat." : "Seluruh parameter fisiologis terpantau aman dan stabil."}`;
-        }
-      } else if (lowerText.includes("siapa") || lowerText.includes("bahaya") || lowerText.includes("risiko") || lowerText.includes("darurat") || lowerText.includes("alert")) {
-        const criticalList = fishermen.filter(f => f.status === "emergency" || f.status === "warning");
-        if (criticalList.length === 0) {
-          aiResponse = "Semua nelayan di laut saat ini dalam kondisi **Aman**. Tidak ada anomali detak jantung, SpO₂ rendah, maupun indikasi jatuh ke laut (fall overboard).";
-        } else {
-          aiResponse = `Nelayan berikut terdeteksi memiliki indikator risiko keselamatan saat ini:
-${criticalList.map((f, i) => `${i + 1}. **${f.name}** (${f.assignedVestId}): Status **${f.status === "emergency" ? "DARURAT" : "PERINGATAN"}**. SpO₂: **${f.spo2}%**, Kelelahan: **${f.fatigue}**, Suhu: **${f.temperature}°C**, Hipotermia: **${f.hypothermiaRisk}**`).join("\n")}
-
-*Rekomendasi AI*: Hubungi kapal terdekat untuk melakukan konfirmasi visual atau bersiap mengirim unit penyelamat jika status naik menjadi Darurat Kritis.`;
-        }
-      } else if (lowerText.includes("rata") || lowerText.includes("average") || lowerText.includes("oksigen") || lowerText.includes("spo2")) {
-        aiResponse = `Rata-rata saturasi oksigen (SpO₂) dari ${diagnostics.activeCount} nelayan aktif saat ini adalah **${diagnostics.avgSpO2}%**. Rata-rata denyut jantung berada di angka **${diagnostics.avgHR} BPM**. Seluruh parameter ini dipantau secara real-time dari chip sensor MAX30102.`;
-      } else if (lowerText.includes("hipotermia") || lowerText.includes("kedinginan")) {
-        aiResponse = "Risiko hipotermia dievaluasi saat sensor air mendeteksi kebasahan/terendam (water contact) bersamaan dengan pembacaan sensor suhu tubuh MAX30205 di bawah 35.5°C. Tindakan pertolongan pertama: Keringkan tubuh korban, ganti pakaian basah, dan selimuti dengan kain tebal.";
-      } else if (lowerText.includes("lelah") || lowerText.includes("fatigue")) {
-        aiResponse = "Tingkat kelelahan nelayan dihitung menggunakan model sensor gerak IMU (MPU6050) dan durasi perjalanan aktif di laut. Bila nelayan melaut lebih dari 5 jam berturut-turut, sistem akan menetapkan status 'High Fatigue' (Sangat Lelah) untuk mencegah kecelakaan akibat kelelahan fisik.";
-      } else {
-        aiResponse = `Laporan Pemantauan AI saat ini:
-- Jumlah nelayan aktif di laut: **${diagnostics.activeCount} orang**.
-- Sebaran tingkat keselamatan: **${diagnostics.highRiskCount}** Kritis, **${diagnostics.modRiskCount}** Peringatan, dan **${diagnostics.safeCount}** Aman.
-- Rata-rata Oksigen SpO₂: **${diagnostics.avgSpO2}%**.
-- Kualitas sinyal jaringan LoRa SX1262: **92% (Sangat Baik)**.
-
-Apakah Anda ingin memeriksa kondisi nelayan tertentu secara spesifik? Silakan ketik nama nelayan (misal: 'Sutarno', 'Budi', atau 'Hendro').`;
+      if (!response.ok) {
+        throw new Error("Chat request failed");
       }
 
-      const aiMsg: Message = {
-        sender: "ai",
-        text: aiResponse,
-        time: new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
-      };
-      setMessages(prev => [...prev, aiMsg]);
-    }, 1000);
+      const resData = await response.json();
+      
+      setMessages(prev => 
+        prev.filter(m => !m.isTyping).concat({
+          sender: "ai",
+          text: resData.text || "Maaf, sistem asisten AI tidak merespons. Silakan coba kembali.",
+          time: new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
+        })
+      );
+    } catch (err) {
+      console.error("Assistant chat error:", err);
+      setMessages(prev => 
+        prev.filter(m => !m.isTyping).concat({
+          sender: "ai",
+          text: "Gagal terhubung dengan server asisten AI. Silakan periksa jaringan Anda atau coba kembali.",
+          time: new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
+        })
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -221,15 +228,27 @@ Apakah Anda ingin memeriksa kondisi nelayan tertentu secara spesifik? Silakan ke
                       <span className="material-icons text-base">smart_toy</span>
                     </div>
                   )}
-                  <div className={`max-w-[75%] rounded-2xl p-3.5 text-sm ${
+                  <div className={`max-w-[85%] sm:max-w-[75%] rounded-2xl p-3.5 text-xs sm:text-sm ${
                     isAi 
-                      ? "bg-slate-100 text-slate-800 rounded-tl-none whitespace-pre-line" 
+                      ? "bg-slate-100 text-slate-800 rounded-tl-none" 
                       : "bg-[#4B6BFB] text-white rounded-tr-none"
                   }`}>
-                    <p className="leading-relaxed">{msg.text}</p>
-                    <span className={`text-[9px] block text-right mt-1.5 ${isAi ? "text-slate-400" : "text-blue-200"}`}>
-                      {msg.time}
-                    </span>
+                    {msg.isTyping ? (
+                      <div className="flex items-center gap-1.5 py-1 px-0.5">
+                        <span className="h-2 w-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
+                        <span className="h-2 w-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
+                        <span className="h-2 w-2 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></span>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="space-y-1.5 break-words">
+                          {renderMarkdownToReact(msg.text, isAi)}
+                        </div>
+                        <span className={`text-[9px] block text-right mt-2 ${isAi ? "text-slate-400" : "text-blue-200"}`}>
+                          {msg.time}
+                        </span>
+                      </>
+                    )}
                   </div>
                 </div>
               );
@@ -244,13 +263,17 @@ Apakah Anda ingin memeriksa kondisi nelayan tertentu secara spesifik? Silakan ke
               placeholder="Tanyakan keselamatan nelayan, misal: 'Siapa yang bahaya?' atau 'Periksa Budi'..."
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-foreground text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all placeholder:text-slate-400"
+              disabled={isLoading}
+              className="flex-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-foreground text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all placeholder:text-slate-400 disabled:opacity-60"
             />
             <button
               type="submit"
-              className="h-11 w-11 rounded-xl bg-[#4B6BFB] hover:bg-blue-600 text-white flex items-center justify-center transition-all shadow-md shadow-blue-500/10 cursor-pointer"
+              disabled={isLoading || !inputText.trim()}
+              className="h-11 w-11 rounded-xl bg-[#4B6BFB] hover:bg-blue-600 text-white flex items-center justify-center transition-all shadow-md shadow-blue-500/10 cursor-pointer disabled:bg-slate-300 disabled:shadow-none disabled:cursor-not-allowed"
             >
-              <span className="material-icons text-base">send</span>
+              <span className="material-icons text-base">
+                {isLoading ? "hourglass_empty" : "send"}
+              </span>
             </button>
           </form>
         </div>
@@ -258,4 +281,131 @@ Apakah Anda ingin memeriksa kondisi nelayan tertentu secara spesifik? Silakan ke
       </div>
     </div>
   );
+}
+
+function renderMarkdownToReact(text: string, isAi: boolean): React.ReactNode {
+  const lines = text.split("\n");
+  const elements: React.ReactNode[] = [];
+  
+  let currentTableRows: string[][] = [];
+  let inTable = false;
+  
+  let currentListItems: React.ReactNode[] = [];
+  let inList = false;
+
+  const flushTable = (key: string) => {
+    if (currentTableRows.length > 0) {
+      let headerRow = null;
+      let bodyRows = [];
+      
+      const rowsToProcess = [...currentTableRows];
+      if (
+        rowsToProcess.length > 1 && 
+        rowsToProcess[1].every((cell: string) => cell.trim().startsWith("---") || cell.trim() === "")
+      ) {
+        headerRow = rowsToProcess[0];
+        bodyRows = rowsToProcess.slice(2);
+      } else {
+        bodyRows = rowsToProcess;
+      }
+
+      elements.push(
+        <div key={`table-${key}`} className="overflow-x-auto my-3 border border-slate-200 rounded-xl bg-white shadow-sm max-w-full">
+          <table className="min-w-full text-[11px] sm:text-xs text-left text-slate-700 divide-y divide-slate-200">
+            {headerRow && (
+              <thead className="bg-slate-50 text-[9px] sm:text-[10px] uppercase font-bold text-slate-500">
+                <tr>
+                  {headerRow.map((cell: string, idx: number) => (
+                    <th key={`th-${idx}`} className="px-3 py-2 font-bold border-b border-slate-200">{parseInlineMarkdown(cell)}</th>
+                  ))}
+                </tr>
+              </thead>
+            )}
+            <tbody className="divide-y divide-slate-100">
+              {bodyRows.map((row: string[], rowIdx: number) => (
+                <tr key={`tr-${rowIdx}`} className={rowIdx % 2 === 0 ? "bg-white" : "bg-slate-50/50"}>
+                  {row.map((cell: string, cellIdx: number) => (
+                    <td key={`td-${cellIdx}`} className="px-3 py-1.5 border-r last:border-r-0 border-slate-100">{parseInlineMarkdown(cell)}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+      currentTableRows = [];
+      inTable = false;
+    }
+  };
+
+  const flushList = (key: string) => {
+    if (currentListItems.length > 0) {
+      elements.push(
+        <ul key={`list-${key}`} className={`list-disc pl-5 my-2 space-y-1.5 ${isAi ? "text-slate-700" : "text-blue-50"} leading-relaxed`}>
+          {currentListItems}
+        </ul>
+      );
+      currentListItems = [];
+      inList = false;
+    }
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Table checking
+    if (trimmed.startsWith("|") && trimmed.endsWith("|")) {
+      if (inList) flushList(`list-before-table-${i}`);
+      inTable = true;
+      const cells = line.split("|").slice(1, -1).map(c => c.trim());
+      currentTableRows.push(cells);
+      continue;
+    } else {
+      if (inTable) {
+        flushTable(`table-end-${i}`);
+      }
+    }
+
+    // List item checking
+    if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
+      inList = true;
+      const charIndex = line.indexOf("- ") !== -1 ? line.indexOf("- ") + 2 : line.indexOf("* ") + 2;
+      const content = line.substring(charIndex);
+      currentListItems.push(
+        <li key={`li-${i}`} className="leading-relaxed">
+          {parseInlineMarkdown(content)}
+        </li>
+      );
+      continue;
+    } else {
+      if (inList) {
+        flushList(`list-end-${i}`);
+      }
+    }
+
+    // Paragraph rendering
+    if (trimmed !== "") {
+      elements.push(
+        <p key={`p-${i}`} className={`leading-relaxed my-1 ${isAi ? "text-slate-700" : "text-white"}`}>
+          {parseInlineMarkdown(line)}
+        </p>
+      );
+    }
+  }
+
+  flushTable("final-table");
+  flushList("final-list");
+
+  return elements;
+}
+
+function parseInlineMarkdown(text: string): React.ReactNode[] {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, idx) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={idx} className="font-bold text-slate-900">{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
 }

@@ -27,7 +27,10 @@ export default function LandingPage() {
     { id: "bs_ant", name: "Antena LoRa Outdoor (5–8 dBi)", desc: "Antena tiang luar ruangan dengan penguatan sinyal tinggi untuk menangkap transmisi LoRa hingga 25 km.", price: "$16.10", priceIdr: "Rp 250.000" },
     { id: "bs_wifi", name: "Modul Ethernet W5500 & Wi-Fi", desc: "Modul komunikasi jaringan kabel LAN berbasis W5500 untuk pengiriman data andal ke server komando.", price: "$4.80", priceIdr: "Rp 75.000" },
     { id: "bs_power", name: "Adaptor 12V + Converter Buck LM2596", desc: "Catu daya 12V DC beserta modul regulator step-down penurun tegangan menjadi 5V/3.3V yang stabil.", price: "$2.10", priceIdr: "Rp 32.000" },
-    { id: "bs_box", name: "Casing IP66 Waterproof & LED Indikator Status", desc: "Kotak panel luar ruangan tahan cuaca dengan 3 unit LED indikator penanda status online stasiun.", price: "$8.30", priceIdr: "Rp 129.000" }
+    { id: "bs_box", name: "Casing IP66 Waterproof & LED Indikator Status", desc: "Kotak panel luar ruangan tahan cuaca dengan 3 unit LED indikator penanda status online stasiun.", price: "$8.30", priceIdr: "Rp 129.000" },
+
+    // Software & API Components
+    { id: "sw_chatgpt", name: "Langganan OpenAI ChatGPT API", desc: "API Key untuk asisten diagnosa AI, memproses parameter kesehatan sensor, deteksi tingkat kelelahan, dan anomali secara cerdas.", price: "$5.00", priceIdr: "Rp 78.000" }
   ];
 
   const activeHardware = allHardware.find(h => h.id === hoveredComponent);
@@ -56,6 +59,9 @@ export default function LandingPage() {
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
+            <Link href="/background" className="text-[#4B6BFB] font-semibold hover:text-blue-700 transition-colors">
+              Latar Belakang
+            </Link>
             <a href="#features" className="hover:text-slate-800 transition-colors">Fitur Utama</a>
             <a href="#schematics" className="hover:text-slate-800 transition-colors">Skema Perangkat</a>
             <a href="#pricing" className="hover:text-slate-800 transition-colors">Rincian Harga</a>
@@ -529,7 +535,7 @@ export default function LandingPage() {
             <p className="mt-2 text-sm text-slate-500">Daftar harga komponen berbiaya rendah untuk implementasi rompi keselamatan maritim pintar.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Vest BOM */}
             <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
               <h3 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3 mb-4 flex justify-between">
@@ -537,7 +543,7 @@ export default function LandingPage() {
                 <span className="text-[#4B6BFB] text-sm">$62.50 (~Rp 970.000)</span>
               </h3>
               <div className="divide-y divide-slate-100 text-xs">
-                {allHardware.filter(h => !h.id.startsWith("bs_")).map((item, i) => (
+                {allHardware.filter(h => !h.id.startsWith("bs_") && !h.id.startsWith("sw_")).map((item, i) => (
                   <div key={i} className="py-2.5 flex justify-between gap-4">
                     <div className="min-w-0">
                       <span className="font-semibold text-slate-800 block truncate">{item.name}</span>
@@ -558,6 +564,26 @@ export default function LandingPage() {
               </h3>
               <div className="divide-y divide-slate-100 text-xs">
                 {allHardware.filter(h => h.id.startsWith("bs_")).map((item, i) => (
+                  <div key={i} className="py-2.5 flex justify-between gap-4">
+                    <div className="min-w-0">
+                      <span className="font-semibold text-slate-800 block truncate">{item.name}</span>
+                    </div>
+                    <div className="text-right font-mono text-slate-600 shrink-0">
+                      {item.price} <span className="text-slate-400">({item.priceIdr})</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Software & API Subscription BOM */}
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h3 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3 mb-4 flex justify-between">
+                <span>Layanan Software & API</span>
+                <span className="text-[#4B6BFB] text-sm">$5.00 (~Rp 78.000)</span>
+              </h3>
+              <div className="divide-y divide-slate-100 text-xs">
+                {allHardware.filter(h => h.id.startsWith("sw_")).map((item, i) => (
                   <div key={i} className="py-2.5 flex justify-between gap-4">
                     <div className="min-w-0">
                       <span className="font-semibold text-slate-800 block truncate">{item.name}</span>
