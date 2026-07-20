@@ -14,15 +14,29 @@ export default function BackgroundPage() {
       <div className="absolute bottom-[5%] left-[-10%] w-[40rem] h-[40rem] bg-blue-400/5 rounded-full blur-[120px] pointer-events-none z-0" />
 
       {/* Header Navigation */}
-      <header className="relative z-10 max-w-7xl mx-auto px-6 py-8 flex items-center justify-between border-b border-slate-200">
-        <Link href="/" className="flex items-center gap-2 text-slate-500 hover:text-slate-800 transition-colors group">
-          <span className="material-icons text-sm transition-transform group-hover:-translate-x-1">arrow_back</span>
-          <span className="font-mono text-xs tracking-wider uppercase font-bold text-slate-700">Kembali ke Beranda</span>
-        </Link>
-        <div className="flex items-center gap-2">
-          <div className="h-2 w-2 rounded-full bg-[#4B6BFB] animate-pulse" />
-          <span className="text-[10px] font-mono tracking-widest text-slate-400 uppercase font-bold">SMS-VEST BACKGROUND STORY</span>
-        </div>
+      <header className="relative z-10 max-w-[1300px] mx-auto px-6 py-8">
+        <nav className="flex items-center justify-between pb-6 border-b border-slate-200">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-xl bg-blue-50 border border-slate-200 overflow-hidden flex items-center justify-center shadow-sm">
+              <span className="material-icons text-[#4B6BFB] text-lg">sailing</span>
+            </div>
+            <span className="font-sans text-base font-bold tracking-tight text-slate-800 uppercase">PKM KC GG GAMING</span>
+          </div>
+
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
+            <Link href="/background" className="text-[#4B6BFB] font-semibold hover:text-blue-700 transition-colors">
+              Latar Belakang
+            </Link>
+            <Link href="/#features" className="hover:text-slate-800 transition-colors">Fitur Utama</Link>
+            <Link href="/#schematics" className="hover:text-slate-800 transition-colors">Skema Perangkat</Link>
+            <Link href="/#pricing" className="hover:text-slate-800 transition-colors">Rincian Harga</Link>
+            <Link href="/#architecture" className="hover:text-slate-800 transition-colors">Alur Sistem</Link>
+          </div>
+
+          <Link href="/admin/dashboard" className="px-5 py-2.5 rounded-xl bg-[#4B6BFB] text-white hover:bg-blue-600 text-sm font-semibold transition-all shadow-md shadow-blue-500/10">
+            Login Admin
+          </Link>
+        </nav>
       </header>
 
       {/* Main Title Hero */}

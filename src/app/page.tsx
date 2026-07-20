@@ -59,7 +59,7 @@ export default function LandingPage() {
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
-            <Link href="/background" className="text-[#4B6BFB] font-semibold hover:text-blue-700 transition-colors">
+            <Link href="/background" className="hover:text-slate-800 transition-colors">
               Latar Belakang
             </Link>
             <a href="#features" className="hover:text-slate-800 transition-colors">Fitur Utama</a>
