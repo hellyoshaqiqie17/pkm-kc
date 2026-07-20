@@ -50,7 +50,7 @@ export default function LandingPage() {
       <div className="relative z-10 max-w-[1300px] mx-auto bg-white rounded-3xl p-6 sm:p-10 md:p-14 lg:p-16 shadow-xl border border-slate-200 theme-transition space-y-16">
         
         {/* Navigation Bar */}
-        <nav className="flex items-center justify-between pb-6 border-b border-slate-200">
+        <nav id="overview" className="flex items-center justify-between pb-6 border-b border-slate-200">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-xl bg-blue-50 border border-slate-200 overflow-hidden flex items-center justify-center shadow-sm">
               <span className="material-icons text-[#4B6BFB] text-lg">sailing</span>
@@ -59,6 +59,9 @@ export default function LandingPage() {
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
+            <Link href="/" className="text-[#4B6BFB] font-semibold hover:text-blue-700 transition-colors">
+              Overview
+            </Link>
             <Link href="/background" className="hover:text-slate-800 transition-colors">
               Latar Belakang
             </Link>

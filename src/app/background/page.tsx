@@ -24,6 +24,9 @@ export default function BackgroundPage() {
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
+            <Link href="/#overview" className="hover:text-slate-800 transition-colors">
+              Overview
+            </Link>
             <Link href="/background" className="text-[#4B6BFB] font-semibold hover:text-blue-700 transition-colors">
               Latar Belakang
             </Link>
@@ -76,63 +79,64 @@ export default function BackgroundPage() {
               />
 
               {/* Ship, Mast, and Radar */}
-              <motion.g
-                transform="translate(60, 40)"
-                animate={{ 
-                  y: [0, -5, 0],
-                  rotate: [-1, 1, -1]
-                }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-              >
-                {/* Mast */}
-                <line x1="100" x2="100" y1="40" y2="100" stroke="#334155" strokeWidth="2.5" />
-                {/* Flag */}
-                <path d="M100 40 L120 48 L100 56 Z" fill="#DC2626" />
-                {/* Boat Body (High contrast royal blue) */}
-                <path d="M40 100 L160 100 L145 120 L55 120 Z" fill="#1D4ED8" stroke="#1E40AF" strokeWidth="2.5" />
-                {/* Cabin */}
-                <rect x="75" y="70" width="50" height="30" rx="3" fill="#FFFFFF" stroke="#334155" strokeWidth="2.5" />
-                <rect x="85" y="78" width="12" height="12" rx="1.5" fill="#1E293B" />
-                <rect x="103" y="78" width="12" height="12" rx="1.5" fill="#1E293B" />
+              <g transform="translate(60, 40)">
+                <motion.g
+                  animate={{ 
+                    y: [0, -5, 0],
+                    rotate: [-1, 1, -1]
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                >
+                  {/* Mast */}
+                  <line x1="100" x2="100" y1="40" y2="100" stroke="#334155" strokeWidth="2.5" />
+                  {/* Flag */}
+                  <path d="M100 40 L120 48 L100 56 Z" fill="#DC2626" />
+                  {/* Boat Body (High contrast royal blue) */}
+                  <path d="M40 100 L160 100 L145 120 L55 120 Z" fill="#1D4ED8" stroke="#1E40AF" strokeWidth="2.5" />
+                  {/* Cabin */}
+                  <rect x="75" y="70" width="50" height="30" rx="3" fill="#FFFFFF" stroke="#334155" strokeWidth="2.5" />
+                  <rect x="85" y="78" width="12" height="12" rx="1.5" fill="#1E293B" />
+                  <rect x="103" y="78" width="12" height="12" rx="1.5" fill="#1E293B" />
 
-                {/* Crossed-out Mobile Phone Icon Alert Box (Aligned at bottom) */}
-                <g transform="translate(100, 25)">
-                  <rect x="-24" y="-34" width="48" height="26" rx="6" fill="#FFFFFF" stroke="#DC2626" strokeWidth="2" />
-                  {/* Signal bars standing up from baseline y=-10 */}
-                  <line x1="-12" y1="-10" x2="-12" y2="-14" stroke="#DC2626" strokeWidth="2" />
-                  <line x1="-7" y1="-10" x2="-7" y2="-18" stroke="#CBD5E1" strokeWidth="2" />
-                  <line x1="-2" y1="-10" x2="-2" y2="-22" stroke="#CBD5E1" strokeWidth="2" />
-                  <line x1="3" y1="-10" x2="3" y2="-26" stroke="#CBD5E1" strokeWidth="2" />
-                  {/* Slanted red cross bar */}
-                  <line x1="-16" y1="-10" x2="16" y2="-30" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" />
-                </g>
+                  {/* Crossed-out Mobile Phone Icon Alert Box (Aligned at bottom) */}
+                  <g transform="translate(100, 25)">
+                    <rect x="-24" y="-34" width="48" height="26" rx="6" fill="#FFFFFF" stroke="#DC2626" strokeWidth="2" />
+                    {/* Signal bars standing up from baseline y=-10 */}
+                    <line x1="-12" y1="-10" x2="-12" y2="-14" stroke="#DC2626" strokeWidth="2" />
+                    <line x1="-7" y1="-10" x2="-7" y2="-18" stroke="#CBD5E1" strokeWidth="2" />
+                    <line x1="-2" y1="-10" x2="-2" y2="-22" stroke="#CBD5E1" strokeWidth="2" />
+                    <line x1="3" y1="-10" x2="3" y2="-26" stroke="#CBD5E1" strokeWidth="2" />
+                    {/* Slanted red cross bar */}
+                    <line x1="-16" y1="-10" x2="16" y2="-30" stroke="#DC2626" strokeWidth="2" strokeLinecap="round" />
+                  </g>
 
-                {/* Radar signal waves radiating from the mast head */}
-                <motion.circle 
-                  cx="100" 
-                  cy="40" 
-                  r="15" 
-                  stroke="#DC2626" 
-                  strokeWidth="2" 
-                  opacity={0.8}
-                  animate={{ r: [15, 85], opacity: [0.8, 0] }}
-                  transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut" }}
-                />
-                <motion.circle 
-                  cx="100" 
-                  cy="40" 
-                  r="15" 
-                  stroke="#DC2626" 
-                  strokeWidth="2" 
-                  opacity={0.8}
-                  animate={{ r: [15, 85], opacity: [0.8, 0] }}
-                  transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut", delay: 1.1 }}
-                />
-              </motion.g>
+                  {/* Radar signal waves radiating from the mast head */}
+                  <motion.circle 
+                    cx="100" 
+                    cy="40" 
+                    r="15" 
+                    stroke="#DC2626" 
+                    strokeWidth="2" 
+                    opacity={0.8}
+                    animate={{ r: [15, 85], opacity: [0.8, 0] }}
+                    transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut" }}
+                  />
+                  <motion.circle 
+                    cx="100" 
+                    cy="40" 
+                    r="15" 
+                    stroke="#DC2626" 
+                    strokeWidth="2" 
+                    opacity={0.8}
+                    animate={{ r: [15, 85], opacity: [0.8, 0] }}
+                    transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut", delay: 1.1 }}
+                  />
+                </motion.g>
+              </g>
 
               {/* Calm ocean waves front layer (high contrast blue) */}
               <motion.path 
@@ -270,59 +274,61 @@ export default function BackgroundPage() {
               />
 
               {/* Tilted empty boat drifting away to the left */}
-              <motion.g
-                transform="translate(30, 95) rotate(-16)"
-                animate={{ 
-                  y: [-3, 3, -3],
-                  rotate: [-16, -21, -16],
-                  x: [0, -10, 0]
-                }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                {/* Boat shape */}
-                <path d="M10 25 L90 25 L80 40 L20 40 Z" fill="#334155" stroke="#0F172A" strokeWidth="2.5" />
-                {/* Cabin */}
-                <rect x="35" y="10" width="30" height="15" fill="#FFFFFF" stroke="#0F172A" strokeWidth="2" />
-              </motion.g>
+              <g transform="translate(30, 95) rotate(-16)">
+                <motion.g
+                  animate={{ 
+                    y: [-3, 3, -3],
+                    rotate: [0, -5, 0],
+                    x: [0, -10, 0]
+                  }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  {/* Boat shape */}
+                  <path d="M10 25 L90 25 L80 40 L20 40 Z" fill="#334155" stroke="#0F172A" strokeWidth="2.5" />
+                  {/* Cabin */}
+                  <rect x="35" y="10" width="30" height="15" fill="#FFFFFF" stroke="#0F172A" strokeWidth="2" />
+                </motion.g>
+              </g>
 
               {/* Drowning fisherman struggling on the right */}
-              <motion.g
-                transform="translate(200, 110)"
-                animate={{ 
-                  y: [0, 8, 0],
-                  rotate: [-3, 3, -3]
-                }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                {/* Head */}
-                <circle cx="20" cy="-5" r="7.5" fill="#DC2626" stroke="#7F1D1D" strokeWidth="2.5" />
-                {/* Left Arm waving up */}
-                <path d="M11 5 Q3 -10, 5 -22" stroke="#DC2626" strokeWidth="3.5" strokeLinecap="round" />
-                <path d="M11 5 Q3 -10, 5 -22" stroke="#7F1D1D" strokeWidth="1" strokeLinecap="round" />
-                {/* Right Arm waving up */}
-                <path d="M29 5 Q37 -10, 35 -22" stroke="#DC2626" strokeWidth="3.5" strokeLinecap="round" />
-                <path d="M29 5 Q37 -10, 35 -22" stroke="#7F1D1D" strokeWidth="1" strokeLinecap="round" />
-                {/* Body drowning in waves */}
-                <path d="M8 15 C10 8, 30 8, 32 15 L28 35 L12 35 Z" fill="#DC2626" stroke="#7F1D1D" strokeWidth="2.5" />
-                
-                {/* Splashing water effects around him */}
-                <motion.path 
-                  d="M-5 12 Q5 0, 8 15" 
-                  stroke="#0EA5E9" 
-                  strokeWidth="2.5" 
-                  fill="none" 
-                  animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.2, repeat: Infinity }}
-                />
-                <motion.path 
-                  d="M45 12 Q35 0, 32 15" 
-                  stroke="#0EA5E9" 
-                  strokeWidth="2.5" 
-                  fill="none" 
-                  animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.2, repeat: Infinity, delay: 0.6 }}
-                />
-              </motion.g>
+              <g transform="translate(200, 110)">
+                <motion.g
+                  animate={{ 
+                    y: [0, 8, 0],
+                    rotate: [-3, 3, -3]
+                  }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  {/* Head */}
+                  <circle cx="20" cy="-5" r="7.5" fill="#DC2626" stroke="#7F1D1D" strokeWidth="2.5" />
+                  {/* Left Arm waving up */}
+                  <path d="M11 5 Q3 -10, 5 -22" stroke="#DC2626" strokeWidth="3.5" strokeLinecap="round" />
+                  <path d="M11 5 Q3 -10, 5 -22" stroke="#7F1D1D" strokeWidth="1" strokeLinecap="round" />
+                  {/* Right Arm waving up */}
+                  <path d="M29 5 Q37 -10, 35 -22" stroke="#DC2626" strokeWidth="3.5" strokeLinecap="round" />
+                  <path d="M29 5 Q37 -10, 35 -22" stroke="#7F1D1D" strokeWidth="1" strokeLinecap="round" />
+                  {/* Body drowning in waves */}
+                  <path d="M8 15 C10 8, 30 8, 32 15 L28 35 L12 35 Z" fill="#DC2626" stroke="#7F1D1D" strokeWidth="2.5" />
+                  
+                  {/* Splashing water effects around him */}
+                  <motion.path 
+                    d="M-5 12 Q5 0, 8 15" 
+                    stroke="#0EA5E9" 
+                    strokeWidth="2.5" 
+                    fill="none" 
+                    animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 1.2, repeat: Infinity }}
+                  />
+                  <motion.path 
+                    d="M45 12 Q35 0, 32 15" 
+                    stroke="#0EA5E9" 
+                    strokeWidth="2.5" 
+                    fill="none" 
+                    animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 1.2, repeat: Infinity, delay: 0.6 }}
+                  />
+                </motion.g>
+              </g>
 
               {/* Stormy sea waves front layer (High contrast royal blue) */}
               <motion.path 
@@ -372,36 +378,37 @@ export default function BackgroundPage() {
               />
 
               {/* Boat carrying the fisherman, floating perfectly ON the waves */}
-              <motion.g
-                transform="translate(45, 122)"
-                animate={{ 
-                  y: [0, -3, 0],
-                  rotate: [-1, 1, -1]
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              >
-                {/* Green SAR/Rescue Boat */}
-                <path d="M0 12 L45 12 L52 4 L62 12 L57 20 L5 20 Z" fill="#10B981" stroke="#065F46" strokeWidth="2.5" />
-                {/* Cabin */}
-                <rect x="12" y="5" width="18" height="7" fill="#FFFFFF" stroke="#065F46" strokeWidth="1.5" />
+              <g transform="translate(45, 122)">
+                <motion.g
+                  animate={{ 
+                    y: [0, -3, 0],
+                    rotate: [-1, 1, -1]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  {/* Green SAR/Rescue Boat */}
+                  <path d="M0 12 L45 12 L52 4 L62 12 L57 20 L5 20 Z" fill="#10B981" stroke="#065F46" strokeWidth="2.5" />
+                  {/* Cabin */}
+                  <rect x="12" y="5" width="18" height="7" fill="#FFFFFF" stroke="#065F46" strokeWidth="1.5" />
 
-                {/* Fisherman standing safely on the boat deck, wearing orange vest */}
-                <g transform="translate(14, -14)">
-                  {/* Head */}
-                  <circle cx="8" cy="5" r="4.5" fill="#334155" stroke="#0F172A" strokeWidth="1" />
-                  {/* Bright orange life vest */}
-                  <path d="M0 10 L16 10 L13 22 L3 22 Z" fill="#F97316" stroke="#C2410C" strokeWidth="2" />
-                  {/* Flashing GPS LED */}
-                  <motion.circle 
-                    cx="8" 
-                    cy="16" 
-                    r="2" 
-                    fill="#10B981" 
-                    animate={{ opacity: [0.2, 1, 0.2] }} 
-                    transition={{ duration: 1, repeat: Infinity }} 
-                  />
-                </g>
-              </motion.g>
+                  {/* Fisherman standing safely on the boat deck, wearing orange vest */}
+                  <g transform="translate(14, -14)">
+                    {/* Head */}
+                    <circle cx="8" cy="5" r="4.5" fill="#334155" stroke="#0F172A" strokeWidth="1" />
+                    {/* Bright orange life vest */}
+                    <path d="M0 10 L16 10 L13 22 L3 22 Z" fill="#F97316" stroke="#C2410C" strokeWidth="2" />
+                    {/* Flashing GPS LED */}
+                    <motion.circle 
+                      cx="8" 
+                      cy="16" 
+                      r="2" 
+                      fill="#10B981" 
+                      animate={{ opacity: [0.2, 1, 0.2] }} 
+                      transition={{ duration: 1, repeat: Infinity }} 
+                    />
+                  </g>
+                </motion.g>
+              </g>
 
               {/* LoRa Wireless Signals propagating from the Vest (x=67) to Coastal Gateway (x=260) */}
               <g transform="translate(68, 105)">
