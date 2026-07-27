@@ -15,11 +15,6 @@ export const metadata: Metadata = {
     "Smart Marine Vest", "Marine Safety Monitoring", "LoRa Telemetry", "Fishermen Tracking", "Coastal Command Center", "GIS Fleet Tracker"
   ],
   authors: [{ name: "Coastal Safety Command", url: "https://sms-vest.id" }],
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-  },
 };
 
 export default function RootLayout({
