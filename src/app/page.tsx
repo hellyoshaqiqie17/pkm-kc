@@ -55,7 +55,7 @@ export default function LandingPage() {
             <div className="h-10 w-10 rounded-xl bg-blue-50 border border-slate-200 overflow-hidden flex items-center justify-center shadow-sm">
               <span className="material-icons text-[#4B6BFB] text-lg">sailing</span>
             </div>
-            <span className="font-sans text-base font-bold tracking-tight text-slate-800 uppercase">PKM KC GG GAMING</span>
+            <span className="font-sans text-base font-bold tracking-tight text-slate-800 uppercase">PKM KC - OceanVest</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
