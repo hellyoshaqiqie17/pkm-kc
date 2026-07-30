@@ -7,14 +7,14 @@ const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: {
-    default: "Smart Marine Safety Vest Command Center",
-    template: "%s | SMS Vest HQ"
+    default: "WearOcean Command Center",
+    template: "%s | WearOcean HQ"
   },
   description: "Real-time GIS monitoring & safety intelligence platform for traditional coastal fisheries using LoRa radio telemetry.",
   keywords: [
-    "Smart Marine Vest", "Marine Safety Monitoring", "LoRa Telemetry", "Fishermen Tracking", "Coastal Command Center", "GIS Fleet Tracker"
+    "WearOcean", "Marine Safety Monitoring", "LoRa Telemetry", "Fishermen Tracking", "Coastal Command Center", "GIS Fleet Tracker"
   ],
-  authors: [{ name: "Coastal Safety Command", url: "https://sms-vest.id" }],
+  authors: [{ name: "Coastal Safety Command", url: "https://wearocean.id" }],
 };
 
 export default function RootLayout({

@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "cdn.sms-vest.id",
+        hostname: "cdn.wearocean.id",
       },
       {
         protocol: "https",

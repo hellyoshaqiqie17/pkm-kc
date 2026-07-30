@@ -1,11 +1,11 @@
-# Robots.txt for SMS-Vest
-# https://sms-vest.id
+# Robots.txt for WearOcean
+# https://wearocean.id
 
 User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://sms-vest.id/sitemap.xml
+Sitemap: https://wearocean.id/sitemap.xml
 
 # Disallow admin pages
 Disallow: /admin
@@ -23,4 +23,4 @@ User-agent: Slurp
 Allow: /
 
 # Host
-Host: https://sms-vest.id
+Host: https://wearocean.id

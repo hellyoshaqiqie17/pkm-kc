@@ -20,7 +20,7 @@ export default function BackgroundPage() {
             <div className="h-10 w-10 rounded-xl bg-blue-50 border border-slate-200 overflow-hidden flex items-center justify-center shadow-sm">
               <span className="material-icons text-[#4B6BFB] text-lg">sailing</span>
             </div>
-            <span className="font-sans text-base font-bold tracking-tight text-slate-800 uppercase">PKM KC - OceanVest</span>
+            <span className="font-sans text-base font-bold tracking-tight text-slate-800 uppercase">PKM KC - WearOcean</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
@@ -350,7 +350,7 @@ export default function BackgroundPage() {
         </div>
       </section>
 
-      {/* Narrative Section 3: Solusi SMS-Vest */}
+      {/* Narrative Section 3: Solusi WearOcean */}
       <section className="relative z-10 max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-lg">
           
@@ -480,14 +480,14 @@ export default function BackgroundPage() {
               Solusi Teknologi
             </span>
             <h2 className="text-2xl font-black text-slate-950 tracking-tight leading-snug">
-              Ekosistem Penyelamatan Ciptaan SMS-Vest
+              Ekosistem Penyelamatan Ciptaan WearOcean
             </h2>
             <h3 className="text-sm font-semibold text-slate-600">
               Integrasi Rompi Pintar Biometrik, Transmisi Radio LoRa Jarak Jauh, & Alarm Komando Berbasis AI
             </h3>
             <div className="space-y-4 text-xs sm:text-sm text-slate-800 leading-relaxed">
               <p>
-                <strong>Solusi SMS-Vest:</strong> Kami membangun ekosistem keselamatan mandiri dengan mengintegrasikan Smart Marine Safety Vest (SMS-Vest) yang dibekali sensor biometrik (MAX30102 untuk denyut nadi & SpO₂, DS18B20 untuk suhu tubuh) dan modul GPS u-blox.
+                <strong>Solusi WearOcean:</strong> Kami membangun ekosistem keselamatan mandiri dengan mengintegrasikan WearOcean Smart Marine Safety System yang dibekali sensor biometrik (MAX30102 untuk denyut nadi & SpO₂, DS18B20 untuk suhu tubuh) dan modul GPS u-blox.
               </p>
               <p>
                 <strong>Mekanisme Kerja:</strong> Saat sensor air mendeteksi nelayan jatuh atau biometrik mendeteksi penurunan suhu/kelelahan ekstrem, sistem langsung memancarkan data secara instan via radio LoRa SX1262 (920 MHz) menembus jarak hingga 25 km ke Gateway Pantai Sine. Server darat langsung menerjemahkan koordinat GPS korban dan membunyikan alarm peringatan di dasbor agar tim SAR dapat diluncurkan secara cepat dan presisi.
@@ -549,7 +549,7 @@ export default function BackgroundPage() {
       {/* Footer */}
       <footer className="relative z-10 border-t border-slate-200 py-12 text-center text-[10px] font-mono tracking-widest text-slate-400">
         <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© 2026 Hellyoshaqiqie. SMS-Vest PKM KC.</p>
+          <p>© 2026 Hellyoshaqiqie. WearOcean PKM KC.</p>
           <div className="flex gap-6">
             <Link href="/" className="hover:text-slate-600 transition-colors">Utama</Link>
             <Link href="/admin/dashboard" className="hover:text-slate-600 transition-colors">Admin Dashboard</Link>

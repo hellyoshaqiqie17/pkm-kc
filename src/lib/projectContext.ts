@@ -1,5 +1,5 @@
 export const projectContext = {
-  projectName: "Smart Marine Safety Vest (SMS-Vest)",
+  projectName: "WearOcean Smart Marine Safety System",
   projectDescription: "Sistem monitoring keselamatan maritim pintar untuk nelayan Pantai Sine, Tulungagung menggunakan rompi keselamatan sensorik dan transmisi radio LoRa SX1262 jarak jauh (hingga 25 km) ke gateway stasiun pangkalan darat, dianalisis secara real-time dengan asisten kecerdasan buatan.",
   
   hardwareComponents: {

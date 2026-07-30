@@ -31,7 +31,7 @@ export default function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem("sms-vest-auth");
+    sessionStorage.removeItem("wearocean-auth");
     router.push("/admin/login");
   };
 
@@ -44,7 +44,7 @@ export default function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
             <span className="material-icons">sailing</span>
           </div>
           <div className="logo-text">
-            <span className="logo-name">SMS Vest</span>
+            <span className="logo-name">WearOcean</span>
             <span className="logo-sub">Monitoring System</span>
           </div>
         </div>

@@ -57,7 +57,7 @@ export default function LandingPage() {
             <div className="h-10 w-10 rounded-xl bg-blue-50 border border-slate-200 overflow-hidden flex items-center justify-center shadow-sm">
               <span className="material-icons text-[#4B6BFB] text-lg">sailing</span>
             </div>
-            <span className="font-sans text-base font-bold tracking-tight text-slate-800 uppercase">PKM KC - OceanVest</span>
+            <span className="font-sans text-base font-bold tracking-tight text-slate-800 uppercase">PKM KC - WearOcean</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
@@ -428,7 +428,7 @@ export default function LandingPage() {
                 
                 {/* Main Gateway Board */}
                 <rect x="95" y="80" width="150" height="210" rx="12" fill="#F8FAFC" stroke="#E2E8F0" strokeWidth="2.5" />
-                <text x="110" y="102" fill="#94A3B8" fontSize="8" fontWeight="bold" fontFamily="monospace">SMS-GATEWAY-v3.0</text>
+                <text x="110" y="102" fill="#94A3B8" fontSize="8" fontWeight="bold" fontFamily="monospace">WEAROCEAN-GATEWAY-v3.0</text>
 
                 {/* ESP32-S3 gateway CPU */}
                 <g 

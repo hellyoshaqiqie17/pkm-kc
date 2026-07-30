@@ -16,7 +16,7 @@ export default function AIAssistantPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: "ai",
-      text: "Halo! Saya adalah Asisten Keselamatan AI SMS-Vest Anda. Saya memproses paket telemetri LoRa secara real-time untuk mendeteksi kelelahan, risiko hipotermia, dan potensi keluar dari zona tangkap aman (geofence). Ada yang bisa saya bantu untuk memantau armada hari ini?",
+      text: "Halo! Saya adalah Asisten Keselamatan AI WearOcean Anda. Saya memproses paket telemetri LoRa secara real-time untuk mendeteksi kelelahan, risiko hipotermia, dan potensi keluar dari zona tangkap aman (geofence). Ada yang bisa saya bantu untuk memantau armada hari ini?",
       time: new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
     }
   ]);

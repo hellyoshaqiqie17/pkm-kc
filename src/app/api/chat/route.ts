@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     };
 
     // System instruction prompt with embedded RAG context
-    const systemPrompt = "Anda adalah Copilot Keselamatan AI untuk sistem monitoring Smart Marine Safety Vest (SMS-Vest) di perairan Pantai Sine, Tulungagung.\n" +
+    const systemPrompt = "Anda adalah Copilot Keselamatan AI untuk sistem monitoring WearOcean di perairan Pantai Sine, Tulungagung.\n" +
                          "Anda bertugas mendampingi operator dalam menganalisis data telemetri LoRa nelayan secara real-time.\n" +
                          "Jawablah dengan bahasa Indonesia yang santun, profesional, ringkas, dan langsung pada intinya.\n" +
                          "Gunakan pemformatan markdown (bullet points, bold text, dll) agar informasi mudah dibaca.\n" +
@@ -238,7 +238,7 @@ function getLocalResponse(message: string, fleetState: any): string {
 
   // 5. Check if user asks about safety vest utility or importance
   if (lower.includes("berguna") || lower.includes("penting") || lower.includes("manfaat") || lower.includes("fungsi vest") || lower.includes("mengapa")) {
-    return `**Mengapa Sistem Smart Marine Safety Vest (SMS-Vest) Ini Sangat Penting & Berguna?**
+    return `**Mengapa Sistem WearOcean Ini Sangat Penting & Berguna?**
 
 1. **Deteksi Fisiologis Otomatis**: Mengukur denyut jantung & SpO₂ (kadar oksigen) nelayan secara real-time dengan sensor MAX30102 untuk mencegah kelelahan berlebih.
 2. **Koneksi Mandiri Tanpa Internet**: Menggunakan modul radio LoRa SX1262 dengan jangkauan nirkabel optimal hingga **25 km** langsung ke Pantai Sine, bebas dari ketergantungan sinyal GSM seluler.

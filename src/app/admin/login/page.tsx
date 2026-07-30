@@ -17,7 +17,7 @@ export default function LoginPage() {
 
     setTimeout(() => {
       if (username === "admin" && password === "command123") {
-        sessionStorage.setItem("sms-vest-auth", "true");
+        sessionStorage.setItem("wearocean-auth", "true");
         router.push("/admin/dashboard");
       } else {
         setError("Kredensial Pusat Komando Salah.");
@@ -40,7 +40,7 @@ export default function LoginPage() {
           <div className="h-12 w-12 rounded-xl bg-blue-600 flex items-center justify-center mx-auto shadow-lg shadow-blue-500/10 mb-4">
             <span className="material-icons text-white text-2xl">settings_input_antenna</span>
           </div>
-          <h1 className="font-sans text-xl font-bold text-slate-800 tracking-wider uppercase">Pusat Komando SMS Vest</h1>
+          <h1 className="font-sans text-xl font-bold text-slate-800 tracking-wider uppercase">Pusat Komando WearOcean</h1>
           <p className="text-[11px] text-slate-400 font-semibold tracking-wider mt-1.5 uppercase">Portal Telemetri Keselamatan Nelayan</p>
         </div>
 
