@@ -8,21 +8,22 @@ export default function LandingPage() {
 
   const allHardware = [
     // Vest Components
-    { id: "esp32s3", name: "ESP32 DevKit V1 (ESP32-WROOM-32)", desc: "Pengendali utama berbasis Wi-Fi & Bluetooth yang mengelola pembacaan sensor dan penjadwalan telemetri.", price: "$7.10", priceIdr: "Rp 110.000" },
-    { id: "lora", name: "Modul LoRa SX1262 (Rompi)", desc: "Modul komunikasi radio nirkabel jarak jauh berdaya rendah untuk mengirim paket data ke base station pantai.", price: "$7.70", priceIdr: "Rp 120.000" },
-    { id: "gps", name: "Modul GPS u-blox NEO-M8N", desc: "Modul navigasi satelit untuk melacak koordinat lintang, bujur, dan kecepatan nelayan melaut secara presisi.", price: "$11.30", priceIdr: "Rp 175.000" },
-    { id: "imu", name: "MPU6050 Akselerometer + Giroskop", desc: "Sensor gerak 6-axis yang mengukur kemiringan dan percepatan tubuh nelayan untuk deteksi jatuh dan diam tanpa gerak.", price: "$1.60", priceIdr: "Rp 25.000" },
-    { id: "max30102", name: "Sensor Detak Jantung & SpO₂ MAX30102", desc: "Sensor optik untuk mendeteksi denyut jantung dan persentase kejenuhan oksigen (SpO₂) dalam darah.", price: "$2.90", priceIdr: "Rp 45.000" },
-    { id: "max30205", name: "Sensor Suhu Air/Tubuh DS18B20 (Waterproof)", desc: "Sensor suhu digital kedap air untuk memantau suhu tubuh nelayan dan suhu air laut sekitar.", price: "$1.30", priceIdr: "Rp 20.000" },
-    { id: "bme280", name: "Sensor Cuaca & Lingkungan BME280", desc: "Mengukur parameter cuaca lokal termasuk suhu udara sekitar, kelembapan, dan tekanan udara (hPa).", price: "$4.80", priceIdr: "Rp 75.000" },
-    { id: "water", name: "Sensor Deteksi Air Laut", desc: "Sensor konduktivitas dengan probe terbuka untuk mendeteksi jika nelayan jatuh terendam ke dalam air laut.", price: "$1.00", priceIdr: "Rp 15.000" },
-    { id: "fuel", name: "Sirkuit Monitoring Baterai (Voltage Divider)", desc: "Sirkuit pembagi tegangan analog-ke-digital untuk memantau kapasitas tegangan baterai rompi.", price: "$0.60", priceIdr: "Rp 10.000" },
-    { id: "battery", name: "Baterai 18650 + Holder + BMS + Charger USB-C", desc: "Sistem catu daya mandiri rompi lengkap dengan proteksi arus (BMS) dan port pengisian daya.", price: "$7.70", priceIdr: "Rp 120.000" },
-    { id: "ui", name: "Tombol SOS + LED RGB + Buzzer Peringatan", desc: "Tombol darurat fisik nelayan, indikator status RGB, dan buzzer alarm suara lokal.", price: "$1.60", priceIdr: "Rp 25.000" },
-    { id: "enc", name: "Casing Waterproof IP67 & Antena (LoRa + GPS)", desc: "Casing pelindung kedap air yang mengapung beserta antena cambuk untuk memaksimalkan pancaran RF.", price: "$14.90", priceIdr: "Rp 230.000" },
+    { id: "esp32s3", name: "ESP32 DevKit V1 (ESP32-WROOM-32)", desc: "Pengendali utama berbasis Wi-Fi & Bluetooth yang mengelola pembacaan sensor dan penjadwalan telemetri.", price: "$8.40", priceIdr: "Rp 130.000" },
+    { id: "lora", name: "Modul LoRa SX1262 (Rompi)", desc: "Modul komunikasi radio nirkabel jarak jauh berdaya rendah untuk mengirim paket data ke base station pantai.", price: "$9.00", priceIdr: "Rp 140.000" },
+    { id: "antenna", name: "Antena LoRa 868/915 MHz (SMA)", desc: "Antena SMA berfrekuensi 868/915 MHz untuk mengoptimalkan pancaran sinyal komunikasi nirkabel LoRa.", price: "$4.50", priceIdr: "Rp 70.000" },
+    { id: "gps", name: "Modul GPS u-blox NEO-M8N", desc: "Modul navigasi satelit untuk melacak koordinat lintang, bujur, dan kecepatan nelayan melaut secara presisi.", price: "$12.60", priceIdr: "Rp 195.000" },
+    { id: "imu", name: "MPU6050 (Accelerometer + Gyroscope)", desc: "Sensor gerak 6-axis yang mengukur kemiringan dan percepatan tubuh nelayan untuk deteksi jatuh dan diam tanpa gerak.", price: "$2.90", priceIdr: "Rp 45.000" },
+    { id: "max30102", name: "Sensor Detak Jantung & SpO₂ (MAX30102)", desc: "Sensor optik untuk mendeteksi denyut jantung dan persentase kejenuhan oksigen (SpO₂) dalam darah.", price: "$4.20", priceIdr: "Rp 65.000" },
+    { id: "ds18b20", name: "Sensor Suhu DS18B20", desc: "Sensor suhu digital kedap air untuk memantau suhu tubuh nelayan dan suhu air laut sekitar.", price: "$2.60", priceIdr: "Rp 40.000" },
+    { id: "bme280", name: "BME280", desc: "Mengukur parameter cuaca lokal termasuk suhu udara sekitar, kelembapan, dan tekanan udara (hPa).", price: "$6.10", priceIdr: "Rp 95.000" },
+    { id: "fuel", name: "Sirkuit Monitoring Baterai (Voltage Divider)", desc: "Sirkuit pembagi tegangan analog-ke-digital untuk memantau kapasitas tegangan baterai rompi.", price: "$1.95", priceIdr: "Rp 30.000" },
+    { id: "battery", name: "Baterai 18650 + Holder + BMS", desc: "Sistem catu daya mandiri rompi lengkap dengan proteksi arus (BMS) dan port pengisian daya.", price: "$9.00", priceIdr: "Rp 140.000" },
+    { id: "ui", name: "Tombol SOS + LED RGB + Buzzer", desc: "Tombol darurat fisik nelayan, indikator status RGB, dan buzzer alarm suara lokal.", price: "$2.90", priceIdr: "Rp 45.000" },
+    { id: "enc", name: "Casing Waterproof IP67 & Aksesori", desc: "Casing pelindung kedap air yang mengapung beserta komponen pelindung tambahan.", price: "$16.10", priceIdr: "Rp 250.000" },
+    { id: "lifevest", name: "Rompi Keselamatan (Life Vest)", desc: "Rompi pelampung fisik sebagai penopang keselamatan utama dan tempat pemasangan modul elektronik.", price: "$7.10", priceIdr: "Rp 110.000" },
 
     // Base Station Components
-    { id: "bs_esp32", name: "ESP32 DevKit V1 (ESP32-WROOM-32) (Gateway)", desc: "Pusat pengendali base station yang menerima paket radio dan meneruskannya ke backend backend via Ethernet.", price: "$7.10", priceIdr: "Rp 110.000" },
+    { id: "bs_esp32", name: "ESP32 DevKit V1 (ESP32-WROOM-32) (Gateway)", desc: "Pusat pengendali base station yang menerima paket radio dan meneruskannya ke backend via Ethernet.", price: "$7.10", priceIdr: "Rp 110.000" },
     { id: "bs_lora", name: "Modul LoRa SX1262 (Base Station)", desc: "Penerima radio stasiun pangkalan pantai yang terus mendengarkan siaran data telemetri dari rompi nelayan.", price: "$7.70", priceIdr: "Rp 120.000" },
     { id: "bs_ant", name: "Antena LoRa Outdoor (5–8 dBi)", desc: "Antena tiang luar ruangan dengan penguatan sinyal tinggi untuk menangkap transmisi LoRa hingga 25 km.", price: "$16.10", priceIdr: "Rp 250.000" },
     { id: "bs_wifi", name: "Modul Ethernet W5500 & Wi-Fi", desc: "Modul komunikasi jaringan kabel LAN berbasis W5500 untuk pengiriman data andal ke server komando.", price: "$4.80", priceIdr: "Rp 75.000" },
@@ -346,10 +347,10 @@ export default function LandingPage() {
 
                 {/* DS18B20 Temp */}
                 <g 
-                  onMouseEnter={() => setHoveredComponent("max30205")}
+                  onMouseEnter={() => setHoveredComponent("ds18b20")}
                   onMouseLeave={() => setHoveredComponent(null)}
                   className="cursor-pointer transition-opacity"
-                  opacity={hoveredComponent && hoveredComponent !== "max30205" ? "0.3" : "1"}
+                  opacity={hoveredComponent && hoveredComponent !== "ds18b20" ? "0.3" : "1"}
                 >
                   <rect x="105" y="190" width="30" height="25" rx="3" fill="#ffffff" stroke="#94A3B8" strokeWidth="1.5" />
                   <text x="106" y="206" fill="#64748B" fontSize="7" fontWeight="bold" fontFamily="monospace">DS18B2</text>
@@ -543,7 +544,7 @@ export default function LandingPage() {
             <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
               <h3 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3 mb-4 flex justify-between">
                 <span>BOM Rompi Keselamatan Pintar</span>
-                <span className="text-[#4B6BFB] text-sm">$62.50 (~Rp 970.000)</span>
+                <span className="text-[#4B6BFB] text-sm">$87.35 (~Rp 1.355.000)</span>
               </h3>
               <div className="divide-y divide-slate-100 text-xs">
                 {allHardware.filter(h => !h.id.startsWith("bs_") && !h.id.startsWith("sw_")).map((item, i) => (
