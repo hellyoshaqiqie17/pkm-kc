@@ -16,7 +16,8 @@ export const projectContext = {
       { name: "Baterai 18650 + Holder + BMS", description: "Sistem catu daya mandiri rompi lengkap dengan proteksi arus (BMS) dan port pengisian daya.", priceUSD: 7.70, priceIDR: 120000 },
       { name: "Tombol SOS + LED RGB + Buzzer", description: "Tombol darurat fisik nelayan, indikator status RGB, dan buzzer alarm suara lokal.", priceUSD: 1.60, priceIDR: 25000 },
       { name: "Casing Waterproof IP67 & Aksesori", description: "Casing pelindung kedap air yang mengapung beserta komponen pelindung tambahan.", priceUSD: 14.90, priceIDR: 230000 },
-      { name: "Rompi Keselamatan (Life Vest)", description: "Rompi pelampung fisik sebagai penopang keselamatan utama dan tempat pemasangan modul elektronik.", priceUSD: 5.80, priceIDR: 90000 }
+      { name: "Rompi Keselamatan (Life Vest)", description: "Rompi pelampung fisik sebagai penopang keselamatan utama dan tempat pemasangan modul elektronik.", priceUSD: 5.80, priceIDR: 90000 },
+      { name: "Sistem Pemanas Tubuh (Heating System)", description: "Elemen pemanas mikro terintegrasi untuk memberikan kehangatan fisik aktif jika terdeteksi risiko hipotermia.", priceUSD: 8.40, priceIDR: 130000 }
     ],
     baseStation: [
       { name: "ESP32 DevKit V1 (ESP32-WROOM-32) (Gateway)", description: "Pusat pengendali base station yang menerima paket radio dan meneruskannya ke backend via Ethernet.", priceUSD: 7.10, priceIDR: 110000 },
@@ -32,8 +33,8 @@ export const projectContext = {
   },
 
   totals: {
-    vestTotalUSD: 70.50,
-    vestTotalIDR: 1095000,
+    vestTotalUSD: 78.90,
+    vestTotalIDR: 1225000,
     baseStationTotalUSD: 46.20,
     baseStationTotalIDR: 716000,
     softwareTotalUSD: 5.00,

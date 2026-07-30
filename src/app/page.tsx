@@ -21,6 +21,7 @@ export default function LandingPage() {
     { id: "ui", name: "Tombol SOS + LED RGB + Buzzer", desc: "Tombol darurat fisik nelayan, indikator status RGB, dan buzzer alarm suara lokal.", price: "$1.60", priceIdr: "Rp 25.000" },
     { id: "enc", name: "Casing Waterproof IP67 & Aksesori", desc: "Casing pelindung kedap air yang mengapung beserta komponen pelindung tambahan.", price: "$14.90", priceIdr: "Rp 230.000" },
     { id: "lifevest", name: "Rompi Keselamatan (Life Vest)", desc: "Rompi pelampung fisik sebagai penopang keselamatan utama dan tempat pemasangan modul elektronik.", price: "$5.80", priceIdr: "Rp 90.000" },
+    { id: "heater", name: "Sistem Pemanas Tubuh (Heating System)", desc: "Elemen pemanas mikro terintegrasi untuk memberikan kehangatan fisik aktif jika terdeteksi risiko hipotermia.", price: "$8.40", priceIdr: "Rp 130.000" },
 
     // Base Station Components
     { id: "bs_esp32", name: "ESP32 DevKit V1 (ESP32-WROOM-32) (Gateway)", desc: "Pusat pengendali base station yang menerima paket radio dan meneruskannya ke backend via Ethernet.", price: "$7.10", priceIdr: "Rp 110.000" },
@@ -544,7 +545,7 @@ export default function LandingPage() {
             <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
               <h3 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3 mb-4 flex justify-between">
                 <span>BOM Rompi Keselamatan Pintar</span>
-                <span className="text-[#4B6BFB] text-sm">$70.50 (~Rp 1.095.000)</span>
+                <span className="text-[#4B6BFB] text-sm">$78.90 (~Rp 1.225.000)</span>
               </h3>
               <div className="divide-y divide-slate-100 text-xs">
                 {allHardware.filter(h => !h.id.startsWith("bs_") && !h.id.startsWith("sw_")).map((item, i) => (
