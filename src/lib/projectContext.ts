@@ -4,19 +4,19 @@ export const projectContext = {
   
   hardwareComponents: {
     vest: [
-      { name: "ESP32 DevKit V1 (ESP32-WROOM-32)", description: "Pengendali utama berbasis Wi-Fi & Bluetooth yang mengelola pembacaan sensor dan penjadwalan telemetri.", priceUSD: 8.40, priceIDR: 130000 },
-      { name: "Modul LoRa SX1262 (Rompi)", description: "Modul komunikasi radio nirkabel jarak jauh berdaya rendah untuk mengirim paket data ke base station pantai.", priceUSD: 9.00, priceIDR: 140000 },
-      { name: "Antena LoRa 868/915 MHz (SMA)", description: "Antena SMA berfrekuensi 868/915 MHz untuk mengoptimalkan pancaran sinyal komunikasi nirkabel LoRa.", priceUSD: 4.50, priceIDR: 70000 },
-      { name: "Modul GPS u-blox NEO-M8N", description: "Modul navigasi satelit untuk melacak koordinat lintang, bujur, dan kecepatan nelayan melaut secara presisi.", priceUSD: 12.60, priceIDR: 195000 },
-      { name: "MPU6050 (Accelerometer + Gyroscope)", description: "Sensor gerak 6-axis yang mengukur kemiringan dan percepatan tubuh nelayan untuk deteksi jatuh dan diam tanpa gerak.", priceUSD: 2.90, priceIDR: 45000 },
-      { name: "Sensor Detak Jantung & SpO₂ (MAX30102)", description: "Sensor optik untuk mendeteksi denyut jantung dan persentase kejenuhan oksigen (SpO₂) dalam darah.", priceUSD: 4.20, priceIDR: 65000 },
-      { name: "Sensor Suhu DS18B20", description: "Sensor suhu digital kedap air untuk memantau suhu tubuh nelayan dan suhu air laut sekitar.", priceUSD: 2.60, priceIDR: 40000 },
-      { name: "BME280", description: "Mengukur parameter cuaca lokal termasuk suhu udara sekitar, kelembapan, dan tekanan udara (hPa).", priceUSD: 6.10, priceIDR: 95000 },
-      { name: "Sirkuit Monitoring Baterai (Voltage Divider)", description: "Sirkuit pembagi tegangan analog-ke-digital untuk memantau kapasitas tegangan baterai rompi.", priceUSD: 1.95, priceIDR: 30000 },
-      { name: "Baterai 18650 + Holder + BMS", description: "Sistem catu daya mandiri rompi lengkap dengan proteksi arus (BMS) dan port pengisian daya.", priceUSD: 9.00, priceIDR: 140000 },
-      { name: "Tombol SOS + LED RGB + Buzzer", description: "Tombol darurat fisik nelayan, indikator status RGB, dan buzzer alarm suara lokal.", priceUSD: 2.90, priceIDR: 45000 },
-      { name: "Casing Waterproof IP67 & Aksesori", description: "Casing pelindung kedap air yang mengapung beserta komponen pelindung tambahan.", priceUSD: 16.10, priceIDR: 250000 },
-      { name: "Rompi Keselamatan (Life Vest)", description: "Rompi pelampung fisik sebagai penopang keselamatan utama dan tempat pemasangan modul elektronik.", priceUSD: 7.10, priceIDR: 110000 }
+      { name: "ESP32 DevKit V1 (ESP32-WROOM-32)", description: "Pengendali utama berbasis Wi-Fi & Bluetooth yang mengelola pembacaan sensor dan penjadwalan telemetri.", priceUSD: 7.10, priceIDR: 110000 },
+      { name: "Modul LoRa SX1262 (Rompi)", description: "Modul komunikasi radio nirkabel jarak jauh berdaya rendah untuk mengirim paket data ke base station pantai.", priceUSD: 7.70, priceIDR: 120000 },
+      { name: "Antena LoRa 868/915 MHz (SMA)", description: "Antena SMA berfrekuensi 868/915 MHz untuk mengoptimalkan pancaran sinyal komunikasi nirkabel LoRa.", priceUSD: 3.20, priceIDR: 50000 },
+      { name: "Modul GPS u-blox NEO-M8N", description: "Modul navigasi satelit untuk melacak koordinat lintang, bujur, dan kecepatan nelayan melaut secara presisi.", priceUSD: 11.30, priceIDR: 175000 },
+      { name: "MPU6050 (Accelerometer + Gyroscope)", description: "Sensor gerak 6-axis yang mengukur kemiringan dan percepatan tubuh nelayan untuk deteksi jatuh dan diam tanpa gerak.", priceUSD: 1.60, priceIDR: 25000 },
+      { name: "Sensor Detak Jantung & SpO₂ (MAX30102)", description: "Sensor optik untuk mendeteksi denyut jantung dan persentase kejenuhan oksigen (SpO₂) dalam darah.", priceUSD: 2.90, priceIDR: 45000 },
+      { name: "Sensor Suhu DS18B20", description: "Sensor suhu digital kedap air untuk memantau suhu tubuh nelayan dan suhu air laut sekitar.", priceUSD: 1.30, priceIDR: 20000 },
+      { name: "BME280", description: "Mengukur parameter cuaca lokal termasuk suhu udara sekitar, kelembapan, dan tekanan udara (hPa).", priceUSD: 4.80, priceIDR: 75000 },
+      { name: "Sirkuit Monitoring Baterai (Voltage Divider)", description: "Sirkuit pembagi tegangan analog-ke-digital untuk memantau kapasitas tegangan baterai rompi.", priceUSD: 0.60, priceIDR: 10000 },
+      { name: "Baterai 18650 + Holder + BMS", description: "Sistem catu daya mandiri rompi lengkap dengan proteksi arus (BMS) dan port pengisian daya.", priceUSD: 7.70, priceIDR: 120000 },
+      { name: "Tombol SOS + LED RGB + Buzzer", description: "Tombol darurat fisik nelayan, indikator status RGB, dan buzzer alarm suara lokal.", priceUSD: 1.60, priceIDR: 25000 },
+      { name: "Casing Waterproof IP67 & Aksesori", description: "Casing pelindung kedap air yang mengapung beserta komponen pelindung tambahan.", priceUSD: 14.90, priceIDR: 230000 },
+      { name: "Rompi Keselamatan (Life Vest)", description: "Rompi pelampung fisik sebagai penopang keselamatan utama dan tempat pemasangan modul elektronik.", priceUSD: 5.80, priceIDR: 90000 }
     ],
     baseStation: [
       { name: "ESP32 DevKit V1 (ESP32-WROOM-32) (Gateway)", description: "Pusat pengendali base station yang menerima paket radio dan meneruskannya ke backend via Ethernet.", priceUSD: 7.10, priceIDR: 110000 },
@@ -32,8 +32,8 @@ export const projectContext = {
   },
 
   totals: {
-    vestTotalUSD: 87.35,
-    vestTotalIDR: 1355000,
+    vestTotalUSD: 70.50,
+    vestTotalIDR: 1095000,
     baseStationTotalUSD: 46.20,
     baseStationTotalIDR: 716000,
     softwareTotalUSD: 5.00,
